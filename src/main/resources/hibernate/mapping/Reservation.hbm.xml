@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class name="touk.cinema.domain.Reservation">
+        <id name="id" type="converted::touk.cinema.infrastructure.hibernate.converter.ReservationIdConverter">
+
+        </id>
+
+        <property name="reservedBy" type="converted::touk.cinema.infrastructure.hibernate.converter.ReservedByConverter" />
+        <property name="discount" />
+
+        <set name="tickets" cascade="all">
+            <key>
+                <column name="reservation_id" />
+            </key>
+            <one-to-many class="touk.cinema.domain.Ticket" />
+        </set>
+    </class>
+</hibernate-mapping>

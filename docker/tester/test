@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SCREENING_ID=$(http "http://app:8080/movies?from=2015-01-01T00:00:00&to=2025-01-01T00:00:00" | jq -r '.[0].screeningTimes[0].id')
+
+#LIST
+http -v "http://app:8080/movies?from=2015-01-01T00:00:00&to=2025-01-01T00:00:00"
+
+#DETAILS
+http -v "http://app:8080/screenings/${SCREENING_ID}"
+
+BODY='{"firstName":"First","lastName":"Last","voucherCode":"","seats":[{"seatNumber":1,"ticketType":"CHILD"},{"seatNumber":2,"ticketType":"CHILD"}]}'
+
+#MAKE RESERVATION
+echo $BODY | http -v POST "http://app:8080/screenings/${SCREENING_ID}/make-reservation"

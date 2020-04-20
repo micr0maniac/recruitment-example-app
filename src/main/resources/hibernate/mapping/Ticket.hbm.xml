@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class name="touk.cinema.domain.Ticket">
+        <id name="id" type="converted::touk.cinema.infrastructure.hibernate.converter.TicketIdConverter">
+
+        </id>
+
+        <property name="seatNumber" />
+        <property name="type" type="converted::touk.cinema.infrastructure.hibernate.converter.TicketTypeConverter" />
+        <property name="value" />
+    </class>
+</hibernate-mapping>

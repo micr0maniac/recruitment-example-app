@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class name="touk.cinema.domain.Screening">
+        <id name="id" type="converted::touk.cinema.infrastructure.hibernate.converter.ScreeningIdConverter">
+
+        </id>
+
+        <property name="start" index="IDX_START" />
+
+        <many-to-one name="movie" class="touk.cinema.domain.Movie" />
+        <many-to-one name="room" class="touk.cinema.domain.screeningroom.ScreeningRoom" />
+
+        <set name="reservations" cascade="all">
+            <key>
+                <column name="screening_id" />
+            </key>
+            <one-to-many class="touk.cinema.domain.Reservation" />
+        </set>
+    </class>
+</hibernate-mapping>

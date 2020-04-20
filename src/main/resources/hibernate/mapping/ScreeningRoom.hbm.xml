@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class name="touk.cinema.domain.screeningroom.ScreeningRoom">
+        <id name="id" type="converted::touk.cinema.infrastructure.hibernate.converter.ScreeningRoomIdConverter">
+
+        </id>
+
+        <property name="schema" type="converted::touk.cinema.infrastructure.hibernate.converter.ScreeningRoomSchemaConverter">
+            <column name="schema" sql-type="jsonb"/>
+        </property>
+
+        <property name="name" />
+    </class>
+
+</hibernate-mapping>
